@@ -1,0 +1,41 @@
+﻿<Window x:Class="StudentAccounting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentAccounting"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" x:Name="dataGridTutorial" HorizontalAlignment="Center" CanUserAddRows="False" Margin="0,10,0,0" VerticalAlignment="Top" Width="624" Height="248">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"></Setter>
+                    <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"></Setter>
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding  Id, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Fullname, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Adress" Width="150" Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Contacts" Width="150" Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                  x:Name="ButtonDelete"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Content="X" Width="auto" Height="auto"
+                  Foreground="Red" Background="Transparent" FontWeight="ExtraBlack"
+                  Click="ButtonDelete_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="AddNewEmployeeTB" Content="ADD" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0,263,0,0" VerticalAlignment="Top" Click="AddNewOrganization_Clicked"/>
+    </Grid>
+</Window>
